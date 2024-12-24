@@ -1,0 +1,45 @@
+<h2>子層文字</h2>
+<div>{{ content }}</div>
+<div>總數量:{{ totalCount }}</div>
+<div>已完成:{{ finishCount }}</div>
+<div>剩下:{{ totalCount - finishCount }}</div>
+<hr />
+<!-- 樣式繫結 -->
+<div [style.fontSize]="fontSize + 'pt'">樣式繫結:{{ type }}</div>
+<!-- 多重樣式繫結 -->
+<div [style]="{ fontSize: fontSize + 'pt', color: color }">多重樣式繫結:{{ type }}</div>
+<!-- 類別繫結 -->
+<div [class]="className">類別繫結:{{ type }}</div>
+<!-- 多重類別繫結 -->
+<div
+  [class.home]="type === 'Home'"
+  [class.work]="type === 'Work'"
+  [class.other]="type === 'Other'"
+>
+多重類別繫結:{{ type }}
+</div>
+<div>待辦事項狀態: {{ state }}</div>
+<!-- 實作 -->
+<button
+  type="button"
+  [disabled]="state === 'None'"
+  (click)="onSetState('None')"
+>
+  未安排
+</button>
+<!-- Property Binding實作 -->
+<button
+  type="button"
+  [attr.disabled]="state === 'Doing' ? 'disabled' : null"
+  (click)="onSetState('Doing')"
+>
+  進行中
+</button>
+<!-- Attribute Binding實作 -->
+<button
+  type="button"
+  [disabled]="state === 'Finish'"
+  (click)="onSetState('Finish')"
+>
+  已完成
+</button>
